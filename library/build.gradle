@@ -1,28 +1,27 @@
 apply plugin: 'com.android.library'
-
 android {
-    compileSdkVersion 19
-    buildToolsVersion '19.1'
-
+    compileSdkVersion 14
+    buildToolsVersion '20.0.0'
     defaultConfig {
         minSdkVersion 3
-        targetSdkVersion 19
+        targetSdkVersion 14
     }
-
     lintOptions {
         xmlReport false
         warningsAsErrors true
         quiet false
         showAll true
-	disable 'OldTargetApi'
+        disable 'OldTargetApi'
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_6
         targetCompatibility JavaVersion.VERSION_1_6
     }
+    productFlavors {
+    }
+    buildTypes {
+    }
 }
-
 android.libraryVariants.all { variant ->
     def name = variant.buildType.name
     def task = project.tasks.create "jar${name.capitalize()}", Jar
@@ -30,5 +29,7 @@ android.libraryVariants.all { variant ->
     task.from variant.javaCompile.destinationDir
     artifacts.add('archives', task);
 }
-
 apply from: '../maven_push.gradle'
+
+dependencies {
+}

@@ -100,6 +100,10 @@ public abstract class AsyncHttpResponseHandler implements ResponseHandlerInterfa
     private Header[] requestHeaders = null;
     private Looper looper = null;
 
+    public String _referenceReq1;
+    public String _referenceReq2;
+    public String _referenceReq3;
+
     @Override
     public URI getRequestURI() {
         return this.requestURI;
